@@ -9,11 +9,11 @@ import {
   DialogDescription,
 } from '@/components/dialog'
 import FormFieldsCategory from './form-fields-category'
-import { categoryType } from '@/types/category'
-import SkeletonFormFieldsCategory from './skeleton-category'
+import { CategoryType } from '@/types/category'
 import { api } from '@/services/api'
 import { useEffect, useState } from 'react'
 import { useToast } from '@/components/use-toast'
+//import SkeletonFormFieldsCategory from './skeleton-category'
 
 interface DialogInformationCategoryProps {
   id: string
@@ -25,16 +25,20 @@ export function DialogInformationCategory({
   id,
   children,
 }: DialogInformationCategoryProps) {
-  const [category, setCategory] = useState<categoryType | null>(null)
+  const [category, setCategory] = useState<CategoryType | null>(null)
   const [open, setOpen] = useState<boolean>()
   const { toast } = useToast()
 
   useEffect(() => {
+
+    if(!open) return
+    setCategory(null)
+    
     const requestData = async () => {
-      const { response } = null // requisicao para api
+      const { response } = await api('GET', `/category/${id}`)
 
       if (response) {
-        setCategory(response)
+        setCategory(response as CategoryType)
       } else {
         setCategory(null)
         toast({
@@ -59,11 +63,9 @@ export function DialogInformationCategory({
             Visualize as informações detalhadas da categoria abaixo.
           </DialogDescription>
         </DialogHeader>
-        {category ? (
+        {category && (
           <FormFieldsCategory category={category} readOnly />
-        ) : (
-          <SkeletonFormFieldsCategory readOnly />
-        )}
+        ) }
       </DialogContent>
     </Dialog>
   )

@@ -1,0 +1,93 @@
+.productCard {
+    background-color: white;
+    border-radius: 18px;
+    box-shadow: 0 10px 0px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.productLink {
+    aspect-ratio: 300 / 200;
+    display: block;
+    width: 100%; 
+    max-height: 200px;
+    overflow: hidden; 
+    border-radius: 8px; 
+    margin-bottom: 15px; 
+}
+
+.productImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center;
+    display: block;
+}
+
+.productName {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 10px 0;
+    color: #333;
+}
+
+.productCategory {
+    font-size: 0.88rem;
+    color: #666;
+    text-align: center;
+    font-weight: 500;
+}
+
+.productBrand {
+    font-size: 0.88rem;
+    color: #666;
+    text-align: left;
+    font-weight: 500;
+}
+
+.productYear {
+    font-size: 0.88rem;
+    color: #666;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.productPrice {
+    font-size: 1.5rem;
+    color: #0070f3;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.productStock {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #dd9c11;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.productButton {
+    background-color: #0070f3;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 580;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.productButton:disabled {
+    background: #ccc;
+    color: #666;
+    cursor:  not-allowed;
+}

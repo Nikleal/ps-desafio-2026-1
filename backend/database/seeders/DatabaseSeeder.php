@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Instruments;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,7 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(10)->create();
-        Category::factory(10)->create();
+        $categories = Category::factory(10)->create();
+        Instruments::factory(10)->recycle($categories)->create();
 
         $user = User::factory()->create([
             'name' => 'Test User',
