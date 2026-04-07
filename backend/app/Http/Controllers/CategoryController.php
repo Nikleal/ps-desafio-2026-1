@@ -22,7 +22,7 @@ class CategoryController extends Controller
      */
     public function index(): JsonResponse
     {
-        $categories = $this->category->with('instruments')->get();
+        $categories = $this->category->with('products')->get();
         return response()->json($categories, Response::HTTP_OK);
     }
 

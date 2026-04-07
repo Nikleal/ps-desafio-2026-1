@@ -12,19 +12,18 @@ class Category extends Model
 
     protected $fillable = ['name'];
 
-    public function instruments(){
-        return $this->hasMany(Instruments::class, 'category_id', 'id');
+    public function products(){
+        return $this->hasMany(Product::class, 'category_id', 'id');
     }
 
     protected static function booted()
     {
 
         self::deleting(function(Category $category){
-            $category->instruments()->each(function(Instruments $instrument){
-                $instrument->delete();
+            $category->products()->each(function(Product $product){
+                $product->delete();
             });
             
         });
     }
 }
-
