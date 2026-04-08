@@ -28,8 +28,26 @@
 }
 
 .headerLink:hover {
-    color: #0070f3;
+    color: #f39a00;
     scale: 1.05;
     transition: all 0.3s ease-in-out;
-    border-bottom: 2px solid #0070f3;
+    border-bottom: 2px solid #f36d00;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .headerLinks {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .headerLink {
+        font-size: 0.9rem;
+    }
 }

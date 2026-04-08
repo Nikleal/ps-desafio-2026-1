@@ -1,4 +1,6 @@
+//import { Footer } from "@/components/footer";
 import Header from "./_components/Header";
+import Footer from "./_components/Footer";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
 
@@ -6,6 +8,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
     <div>
       <Header />
       {children}
+      <Footer />
     </div>
   )
 }

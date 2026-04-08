@@ -10,7 +10,7 @@ export default function Products() {
 
     useEffect(() => {
         async function getSportItems() {
-           const {response, error} = await api('GET', '/instruments');
+           const {response, error} = await api('GET', '/products');
 
            if(response) {
             setSportItem(response as sportsItemType[]);
@@ -24,7 +24,7 @@ export default function Products() {
     return (
         <section className="products" id="products">
             <div className={styles.container}> 
-                <h1 className={styles.title}>Nossos Produtos</h1>
+                <h1 id="produtos" className={styles.title}>Nossos Produtos</h1>
                 <div className={styles.productList}>
                     {sportItem.map((product) => (
                         <ProductCard key={product.id} {...product} />
