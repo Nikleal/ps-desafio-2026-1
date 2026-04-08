@@ -26,7 +26,7 @@ export default async function ListSportsItems() {
 
   useEffect(() => {
     async function getSportItems(){
-      const { response, error } = await api('GET', '/instruments')
+      const { response, error } = await api('GET', '/products')
 
       if(response){
         setsportsItems(response as sportsItemType[])

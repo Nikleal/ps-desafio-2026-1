@@ -33,7 +33,7 @@ export function DialogInformationSportsItem({
     setSportsItem(null)
 
     const requestData = async () => {
-      const { response } = await api('GET', `/instruments/${id}`)
+      const { response } = await api('GET', `/products/${id}`)
 
       if (response) {
         setSportsItem(response as sportsItemType)

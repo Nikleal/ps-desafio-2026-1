@@ -13,7 +13,6 @@ import { CategoryType } from '@/types/category'
 import { api } from '@/services/api'
 import { useEffect, useState } from 'react'
 import { useToast } from '@/components/use-toast'
-//import SkeletonFormFieldsCategory from './skeleton-category'
 
 interface DialogInformationCategoryProps {
   id: string

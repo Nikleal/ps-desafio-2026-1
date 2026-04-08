@@ -32,7 +32,7 @@ export function DialogUpdateSportsItem({ id, children }: DialogUpdateSportsItemP
     setSportsItem(null)
 
     const requestData = async () => {
-      const { response } = await api<sportsItemType>('GET', `/instruments/${id}`)
+      const { response } = await api<sportsItemType>('GET', `/products/${id}`)
 
       if (response) {
         setSportsItem(response)
