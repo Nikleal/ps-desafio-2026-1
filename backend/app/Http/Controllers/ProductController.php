@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BuyProductsRequest;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
@@ -88,4 +89,21 @@ class ProductController extends Controller
         $product->delete();
         return response()->json(['Message' => 'Produto deletado com sucesso']); 
     }
-}
+
+    public function buy(BuyProductsRequest $request, $id): JsonResponse
+    {
+        $data = $request->validated();
+        $amount = $data['amount'];
+        $product = $this->product->findOrFail($id);
+        if ($product->amount < $amount){
+            return response()->json(['Menssage' => 'Quantidade excede o estoque']);
+        }
+
+        $product->amount -= $amount;
+        $product->save();
+        return response()->json(['Menssage' => 'Compra realizada com sucesso'], Response::HTTP_OK);
+    }
+} 
+ 
+
+ 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Category extends Model
 {
@@ -18,12 +19,10 @@ class Category extends Model
 
     protected static function booted()
     {
-
         self::deleting(function(Category $category){
-            $category->products()->each(function(Product $product){
-                $product->delete();
-            });
-            
+            if($category->products()->count() > 0){
+                throw new \Exception('Não é possível deletar uma categoria que possui produtos vinculados');
+            }
         });
     }
 }

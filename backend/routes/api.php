@@ -24,6 +24,7 @@ Route::get('category',[CategoryController::class, 'index']);
 Route::get('category/{id}',[CategoryController::class, 'show']);
 Route::get('products',[ProductController::class, 'index']);
 Route::get('products/{id}',[ProductController::class, 'show']);
+Route::post('/products/{id}/buy',[ProductController::class, 'buy']);
 
 Route::get('/', function () {
     return ['Laravel' => app()->version()];
