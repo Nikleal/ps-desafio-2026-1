@@ -42,7 +42,7 @@ export default function Categories() {
 
           {categories.map((item) => (
             <div key={item.id} className={styles.categoryCard} onClick={() => router.push(`/?category_id=${item.id}`, {scroll:false})} 
-              style={{cursor: "pointer", borderColor: !selectedCatergory ? "#129401" : undefined}}>
+              style={{cursor: "pointer", borderColor: selectedCatergory === String(item.id) ? "#129401" : "transparent"}}>
               <h2>{item.name}</h2>
             </div>
           ))}
