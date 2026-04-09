@@ -2,7 +2,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
@@ -10,7 +10,6 @@
     align-items: center;
     z-index: 1000;
     padding: 20px;
-    box-sizing: border-box;
     backdrop-filter: blur(4px);
 }
 
@@ -51,12 +50,6 @@
     margin-top: 10px;
 }
 
-@media (min-width: 600px) {
-    .modalContent {
-        flex-direction: row;
-        align-items: center;
-    }
-}
 
 .imageContainer {
     flex: 1;
@@ -221,4 +214,24 @@
     background: linear-gradient(135deg, #ccc 0%, #b3b3b3 100%);
     cursor: not-allowed;
     color: #666;
+}
+
+@media (max-width: 480px) {
+    .modal {
+        padding: 15px; 
+    }
+    
+    .title {
+        font-size: 1.5rem; 
+    }
+    
+    .productActions {
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+    
+    .addToCartButton {
+        width: 100%; 
+        margin-top: 10px;
+    }
 }

@@ -7,6 +7,7 @@ import { ProductModal } from "./Product.Modal";
 
 export default function ProductCard(sportItem: sportsItemType) {
     const fallbackImage = "/assets/images/placeholder.png";
+    const formattedPrice = (Number(sportItem?.price)).toFixed(2).replace(".",",");
     
     return (
 
@@ -21,7 +22,7 @@ export default function ProductCard(sportItem: sportsItemType) {
                 <p className={styles.productBrand}>Marca: {sportItem?.brand}</p>
                 <p className={styles.productYear}>Ano: {sportItem?.year}</p>
                 </div>
-                <p className={styles.productPrice}>R${sportItem?.price}</p>
+                <p className={styles.productPrice}>R${formattedPrice}</p>
                 <p className={styles.productStock}>Estoque: {sportItem?.amount}</p>
             </div>
         </ProductModal>
