@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Request;
 use Throwable;
 
 class ProductController extends Controller
@@ -23,9 +24,13 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index():JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $products = $this->product->with('category')->get();
+        $query = $this->product->with('category');
+        if($request->has('category_id')){
+            $query->where('category_id', $request->input('category_id'));
+        }
+        $products = $query->get();
         return response()->json($products, Response::HTTP_OK);
     }
 

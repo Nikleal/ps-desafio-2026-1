@@ -4,9 +4,14 @@ import { api } from "@/services/api";
 import { CategoryType } from "@/types/category";
 import { useEffect, useState } from "react";
 import styles from "./category.module.css";
+import { useRouter } from 'next/navigation';
+import { useSearchParams } from "next/navigation";
 
 export default function Categories() {
   const [categories, setCategories] = useState<CategoryType[]>([]);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const selectedCatergory = searchParams.get("category_id");
 
   useEffect(() => {
     async function getCategories() {
@@ -24,12 +29,20 @@ export default function Categories() {
   return (
     <section className="products" id="products">
       <div className={styles.container}>
-        <h1 id="produtos" className={styles.title}>
+        <h1 id="categorias" className={styles.title}>
           CATEGORIAS
         </h1>
+        
         <div className={styles.productList}>
+          <div className={styles.categoryCard} onClick={() => router.push("/", { scroll: false })}
+            style={{ cursor: "pointer", border: !selectedCatergory ? "2px solid #129401" : "none" }}>
+                
+              <h2>Todos</h2>
+        </div>
+
           {categories.map((item) => (
-            <div key={item.id} className={styles.categoryCard}>
+            <div key={item.id} className={styles.categoryCard} onClick={() => router.push(`/?category_id=${item.id}`, {scroll:false})} 
+              style={{cursor: "pointer", borderColor: !selectedCatergory ? "#129401" : undefined}}>
               <h2>{item.name}</h2>
             </div>
           ))}

@@ -9,9 +9,9 @@ export default function Header() {
                 <Image src="/assets/images/logoBocha.png" alt="logo" width={100} height={100}/>
                 <div className={styles.headerLinks}>
                     <Link href="#produtos" className={styles.headerLink}>Produtos</Link> 
+                    <Link href="#categorias" className={styles.headerLink}>Categorias</Link>                     
                     <Link href="#sobre" className={styles.headerLink}>Sobre</Link> 
                     <Link href="#contato" className={styles.headerLink}>Contato</Link> 
-                    <Link href="/admin" className={styles.headerLink}>Administrador</Link>                     
                 </div>
             </div>
         </header>
